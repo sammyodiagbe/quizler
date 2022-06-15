@@ -12,7 +12,7 @@ class QuizApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.indigo,
         body: Quizzler(),
       ),
     );
@@ -37,9 +37,9 @@ class _QuizzlerState extends State<Quizzler> {
               child: Text(
                 'Trees it has but no one sees, tall taller than trees up it goes but it never grows.',
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -52,35 +52,27 @@ class _QuizzlerState extends State<Quizzler> {
                   margin: EdgeInsets.symmetric(vertical: 10),
                   padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.green,
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: Text('A. Trees'),
+                  child: Text('True',
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white)),
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 10),
                   padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
-                  child: Text('B. Moutains'),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
+                  child: Text(
+                    'False',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
                   ),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
-                  child: Text('C. Forest'),
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
-                  child: Text('D. Jungle'),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.red,
                     borderRadius: BorderRadius.circular(15),
                   ),
                 ),
