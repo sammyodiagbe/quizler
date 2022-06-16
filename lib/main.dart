@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:quizler/models/quizbrain.dart';
 
 void main() {
   runApp(QuizApp());
@@ -26,6 +27,8 @@ class Quizzler extends StatefulWidget {
 }
 
 class _QuizzlerState extends State<Quizzler> {
+  int _questionIndex = 0;
+  final quizbrain = Quizbrain();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,7 +38,7 @@ class _QuizzlerState extends State<Quizzler> {
           Expanded(
             child: Center(
               child: Text(
-                'Trees it has but no one sees, tall taller than trees up it goes but it never grows.',
+                quizbrain.questionLists[_questionIndex].questionText,
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 24,
@@ -48,32 +51,50 @@ class _QuizzlerState extends State<Quizzler> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(15),
+                GestureDetector(
+                  onTap: () {
+                    if ((_questionIndex < quizbrain.questionLists.length)) {
+                      setState(() {
+                        _questionIndex++;
+                      });
+                    }
+                  },
+                  child: Container(
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Text('True',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white)),
                   ),
-                  child: Text('True',
+                ),
+                GestureDetector(
+                  onTap: () {
+                    if (_questionIndex > quizbrain.questionLists.length - 1)
+                      return;
+                    setState(() {
+                      _questionIndex++;
+                    });
+                  },
+                  child: Container(
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
+                    child: Text(
+                      'False',
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white)),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
-                  child: Text(
-                    'False',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(15),
+                          color: Colors.white),
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                   ),
                 ),
               ],
