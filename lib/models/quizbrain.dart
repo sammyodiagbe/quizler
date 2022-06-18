@@ -2,7 +2,7 @@ import "question.dart";
 
 class Quizbrain {
   // the main purpose of this class is to abstract our quiz app logic away
-  List<Question> questionLists = [
+  List<Question> _questionLists = [
     Question('Messi is fron Argentina', true),
     Question('Ronaldo is from venezuela', false),
     Question(
@@ -13,14 +13,18 @@ class Quizbrain {
 
   int _quizIndex = 0;
 
+  Question getNextQuestion() {
+    return _questionLists[_quizIndex];
+  }
+
   void nextQuestion() {
-    if (_quizIndex > questionLists.length - 1) {
+    if (_quizIndex > _questionLists.length - 1) {
       _quizIndex++;
     }
   }
 
   bool checkAnswer(bool userAnswer) {
-    bool questionAsnwer = questionLists[_quizIndex].questionAnswer;
+    bool questionAsnwer = _questionLists[_quizIndex].questionAnswer;
     return questionAsnwer == userAnswer;
   }
 }

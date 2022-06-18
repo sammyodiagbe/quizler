@@ -27,7 +27,6 @@ class Quizzler extends StatefulWidget {
 }
 
 class _QuizzlerState extends State<Quizzler> {
-  int _questionIndex = 0;
   final quizbrain = Quizbrain();
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,7 @@ class _QuizzlerState extends State<Quizzler> {
           Expanded(
             child: Center(
               child: Text(
-                quizbrain.questionLists[_questionIndex].questionText,
+                quizbrain.getNextQuestion().questionText,
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 24,
@@ -53,11 +52,9 @@ class _QuizzlerState extends State<Quizzler> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    if ((_questionIndex < quizbrain.questionLists.length)) {
-                      setState(() {
-                        _questionIndex++;
-                      });
-                    }
+                    setState(() {
+                      quizbrain.nextQuestion();
+                    });
                   },
                   child: Container(
                     margin: EdgeInsets.symmetric(vertical: 10),
@@ -75,10 +72,8 @@ class _QuizzlerState extends State<Quizzler> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    if (_questionIndex > quizbrain.questionLists.length - 1)
-                      return;
                     setState(() {
-                      _questionIndex++;
+                      quizbrain.nextQuestion();
                     });
                   },
                   child: Container(
