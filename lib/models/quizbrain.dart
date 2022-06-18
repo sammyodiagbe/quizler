@@ -10,4 +10,17 @@ class Quizbrain {
         false),
     Question('Some random question that i cannot think of right now.', true)
   ];
+
+  int _quizIndex = 0;
+
+  void nextQuestion() {
+    if (_quizIndex > questionLists.length - 1) {
+      _quizIndex++;
+    }
+  }
+
+  bool checkAnswer(bool userAnswer) {
+    bool questionAsnwer = questionLists[_quizIndex].questionAnswer;
+    return questionAsnwer == userAnswer;
+  }
 }
