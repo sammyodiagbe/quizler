@@ -18,7 +18,7 @@ class Quizbrain {
   }
 
   void nextQuestion() {
-    if (_quizIndex > _questionLists.length - 1) {
+    if (_quizIndex < _questionLists.length - 1) {
       _quizIndex++;
     }
   }
