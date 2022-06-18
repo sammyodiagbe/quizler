@@ -23,6 +23,10 @@ class Quizbrain {
     }
   }
 
+  bool checkIndex() {
+    return _quizIndex < _questionLists.length;
+  }
+
   bool checkAnswer(bool userAnswer) {
     bool questionAsnwer = _questionLists[_quizIndex].questionAnswer;
     return questionAsnwer == userAnswer;

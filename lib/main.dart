@@ -28,6 +28,26 @@ class Quizzler extends StatefulWidget {
 
 class _QuizzlerState extends State<Quizzler> {
   final quizbrain = Quizbrain();
+  List<Icon> scoreKeeper = [];
+
+  void checkAnser(bool userAnswer) {
+    setState(
+      () {
+        if (quizbrain.checkIndex()) {
+          if (quizbrain.checkAnswer(userAnswer)) {
+            scoreKeeper.add(Icon(
+              Icons.check,
+              color: Colors.green,
+            ));
+          } else {
+            scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+          }
+        }
+        quizbrain.nextQuestion();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -52,9 +72,7 @@ class _QuizzlerState extends State<Quizzler> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    setState(() {
-                      quizbrain.nextQuestion();
-                    });
+                    checkAnser(true);
                   },
                   child: Container(
                     margin: EdgeInsets.symmetric(vertical: 10),
@@ -72,9 +90,7 @@ class _QuizzlerState extends State<Quizzler> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    setState(() {
-                      quizbrain.nextQuestion();
-                    });
+                    checkAnser(false);
                   },
                   child: Container(
                     margin: EdgeInsets.symmetric(vertical: 10),
@@ -93,6 +109,12 @@ class _QuizzlerState extends State<Quizzler> {
                   ),
                 ),
               ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(15),
+            child: Row(
+              children: scoreKeeper,
             ),
           )
         ],
