@@ -42,8 +42,8 @@ class _QuizzlerState extends State<Quizzler> {
           } else {
             scoreKeeper.add(Icon(Icons.close, color: Colors.red));
           }
+          quizbrain.nextQuestion();
         }
-        quizbrain.nextQuestion();
       },
     );
   }
