@@ -34,7 +34,7 @@ class _QuizzlerState extends State<Quizzler> {
     setState(
       () {
         print(quizbrain.checkIndex());
-        if (quizbrain.checkIndex()) {
+        if (!quizbrain.checkIndex()) {
           if (quizbrain.checkAnswer(userAnswer)) {
             scoreKeeper.add(Icon(
               Icons.check,
@@ -43,8 +43,8 @@ class _QuizzlerState extends State<Quizzler> {
           } else {
             scoreKeeper.add(Icon(Icons.close, color: Colors.red));
           }
-          quizbrain.nextQuestion();
         }
+        quizbrain.nextQuestion();
       },
     );
   }

@@ -24,7 +24,7 @@ class Quizbrain {
   }
 
   bool checkIndex() {
-    return _quizIndex < _questionLists.length;
+    return _quizIndex > _questionLists.length - 1;
   }
 
   bool checkAnswer(bool userAnswer) {
