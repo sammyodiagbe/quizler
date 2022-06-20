@@ -33,8 +33,7 @@ class _QuizzlerState extends State<Quizzler> {
   void checkAnser(bool userAnswer) {
     setState(
       () {
-        print(quizbrain.checkIndex());
-        if (!quizbrain.checkIndex()) {
+        if (!quizbrain.getDone()) {
           if (quizbrain.checkAnswer(userAnswer)) {
             scoreKeeper.add(Icon(
               Icons.check,

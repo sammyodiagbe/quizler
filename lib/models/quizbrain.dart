@@ -12,6 +12,7 @@ class Quizbrain {
   ];
 
   int _quizIndex = 0;
+  bool _done = false;
 
   Question getNextQuestion() {
     return _questionLists[_quizIndex];
@@ -20,15 +21,21 @@ class Quizbrain {
   void nextQuestion() {
     if (_quizIndex < _questionLists.length - 1) {
       _quizIndex++;
+    } else {
+      _done = true;
     }
   }
 
   bool checkIndex() {
-    return _quizIndex > _questionLists.length - 1;
+    return _quizIndex >= _questionLists.length - 1;
   }
 
   bool checkAnswer(bool userAnswer) {
     bool questionAsnwer = _questionLists[_quizIndex].questionAnswer;
     return questionAsnwer == userAnswer;
+  }
+
+  bool getDone() {
+    return _done;
   }
 }
